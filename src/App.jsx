@@ -10,12 +10,12 @@ const Container = styled.div`
   min-height: 100vh;
   height: 100%;
 `;
-const GrassContainer = styled.div`
+const SectionDevider = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 10000px;
+  min-height: 100vh;
   width: 100%;
   position: relative;
   background-color: black;
@@ -41,22 +41,18 @@ function App() {
     });
     return () => {
       document.removeEventListener("scroll", () => {
-        if (window.screenY < 900) {
-          setPosition(window.scrollY);
-        } else {
-          setPosition(0);
-        }
+        setPosition(window.scrollY);
       });
     };
   }, []);
   return (
     <Container>
       <ForestNight position={position} />
-      <GrassContainer>
+      <SectionDevider>
         <GrassImage src="./grass 1.png" alt="Grass" Left={-3} Deg={0} />
         <GrassImage src="./grass 2.png" alt="Grass" Deg={180} />
         <GrassImage src="./grass 2.png" alt="Grass" Right={0} Deg={180} />
-      </GrassContainer>
+      </SectionDevider>
     </Container>
   );
 }

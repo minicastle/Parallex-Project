@@ -20,8 +20,7 @@ const Moon = styled.img`
     return props.Gauge * 0.1 + "deg";
   }};
   top: ${(props) => {
-    let buf = props.Gauge + 50;
-    return buf < 900 ? buf + "px" : "900px";
+    return props.Gauge < 850 ? props.Gauge + 50 + "px" : "900px";
   }};
   z-index: 2;
 `;

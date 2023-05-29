@@ -13,6 +13,7 @@ const Container = styled.div`
   position: relative;
   overflow: hidden;
 `;
+/** 동적인 움직임을 주기 위해 scroll에 따라 위치와 각도가 변화하는 달 */
 const Moon = styled.img`
   position: absolute;
   height: 25%;
@@ -24,6 +25,7 @@ const Moon = styled.img`
   }};
   z-index: 2;
 `;
+/** 고정적인 형태의 산 */
 const Mountain = styled.img`
   position: absolute;
   bottom: ${(props) => {
@@ -34,6 +36,7 @@ const Mountain = styled.img`
   z-index: 3;
   min-width: 1300px;
 `;
+/** 동적으로 보이기 위해 움직임을 준 산 */
 const MovingMountain = styled.img`
   position: absolute;
   bottom: 0;
@@ -51,6 +54,7 @@ const MovingMountain = styled.img`
         };
   }}
 `;
+/** 가까이에 보이는 나무 이미지 */
 const NearTrees = styled.img`
   position: absolute;
   bottom: 0;
@@ -62,6 +66,7 @@ const NearTrees = styled.img`
     return 1 + props.Gauge * 0.0003;
   }};
 `;
+/** 멀리서 보이는 나무이미지 */
 const FarTrees = styled.img`
   position: absolute;
   bottom: 0;
@@ -71,12 +76,14 @@ const FarTrees = styled.img`
     return 1 - props.Gauge * 0.0003;
   }};
 `;
+/** 나 자신을 표현한 남성( 낚시 의자에 앉아 밤하늘을 보기 좋아한다. ) */
 const Person = styled.img`
   position: absolute;
   bottom: 0;
   z-index: 6;
   height: 35%;
 `;
+/** 밤하늘을 표현하기 위한 별 콘테이너 */
 const StarContain = styled.div`
   display: flex;
   justify-content: center;
@@ -89,6 +96,7 @@ const StarContain = styled.div`
     return props.Margin < 900 ? props.Margin + "px" : "900px";
   }};
 `;
+/** 기본 별 */
 const CircleStar = styled.span`
   position: absolute;
   width: 3px;
@@ -127,6 +135,7 @@ const CircleStar = styled.span`
     }
   }
 `;
+/** 별똥별 */
 const ShootingStar = styled.div`
   position: absolute;
   top: ${(props) => {
@@ -180,6 +189,7 @@ const ShootingStar = styled.div`
 `;
 function ForestNight({ position }) {
   const [shootingStar, setShootingStar] = useState(0);
+  /** 별똥별 생성 및 애니메이션 반복을 위한 함수 */
   const ShootingStarGen = useCallback(() => {
     let contents = (
       <>
@@ -195,6 +205,7 @@ function ForestNight({ position }) {
     else return <></>;
   }, [shootingStar]);
   useEffect(() => {
+    /** 별똥별 애니메이션 반복 및 초기화 주기 */
     const Start = setInterval(() => {
       setShootingStar(true);
     }, 3000);

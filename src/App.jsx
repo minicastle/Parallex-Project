@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import ForestNight from "./Component/ForestNight";
 
@@ -10,6 +10,7 @@ const Container = styled.div`
   min-height: 100vh;
   height: 100%;
 `;
+/**콘텐츠를 담고있는 기본 Section */
 const SectionDevider = styled.div`
   display: flex;
   justify-content: center;
@@ -20,6 +21,7 @@ const SectionDevider = styled.div`
   position: relative;
   background-color: black;
 `;
+/**Forest Night태그의 아래 깔리는 잔디를 동적으로 주기 위한 콘텐츠 */
 const GrassImage = styled.img`
   position: absolute;
   top: -300px;
@@ -36,6 +38,7 @@ const GrassImage = styled.img`
 function App() {
   const [position, setPosition] = useState(0);
   useEffect(() => {
+    /** 패럴렉스 애니메이션을 위한 scroll event */
     document.addEventListener("scroll", () => {
       setPosition(window.scrollY);
     });
